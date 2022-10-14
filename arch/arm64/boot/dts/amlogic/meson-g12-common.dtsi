@@ -116,7 +116,7 @@
 		linux,cma {
 			compatible = "shared-dma-pool";
 			reusable;
-			size = <0x0 0x10000000>;
+			size = <0x0 0x38000000>;
 			alignment = <0x0 0x400000>;
 			linux,cma-default;
 		};
@@ -181,6 +181,8 @@
 				      "timing-adjustment";
 			rx-fifo-depth = <4096>;
 			tx-fifo-depth = <2048>;
+			resets = <&reset RESET_ETHERNET>;
+			reset-names = "stmmaceth";
 			status = "disabled";
 
 			mdio0: mdio {
