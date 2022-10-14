@@ -34,6 +34,7 @@ dtb-$(CONFIG_ARCH_MESON) += meson-gxbb-beelink-mini-mx.dtb
 dtb-$(CONFIG_ARCH_MESON) += meson-gxbb-beelink-mini-mxiii.dtb
 dtb-$(CONFIG_ARCH_MESON) += meson-gxbb-kii-pro.dtb
 dtb-$(CONFIG_ARCH_MESON) += meson-gxbb-ki-plus.dtb
+dtb-$(CONFIG_ARCH_MESON) += meson-gxbb-minix-neo-u1.dtb
 dtb-$(CONFIG_ARCH_MESON) += meson-gxbb-nanopi-k2.dtb
 dtb-$(CONFIG_ARCH_MESON) += meson-gxbb-nexbox-a95x.dtb
 dtb-$(CONFIG_ARCH_MESON) += meson-gxbb-odroidc2.dtb
