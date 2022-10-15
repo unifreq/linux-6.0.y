@@ -948,6 +948,8 @@
 
 	sfc: spi@fe300000 {
 		compatible = "rockchip,sfc";
+		#address-cells = <1>;
+		#size-cells = <0>;
 		reg = <0x0 0xfe300000 0x0 0x4000>;
 		interrupts = <GIC_SPI 101 IRQ_TYPE_LEVEL_HIGH>;
 		clocks = <&cru SCLK_SFC>, <&cru HCLK_SFC>;
