@@ -74,26 +74,6 @@
 		vin-supply = <&dc_12v>;
 	};
 
-	vcc3v3_phy0: vcc3v3-phy0-regulator {
-		compatible = "regulator-fixed";
-		regulator-name = "vcc3v3_phy0";
-		regulator-always-on;
-		regulator-boot-on;
-		regulator-min-microvolt = <3300000>;
-		regulator-max-microvolt = <3300000>;
-		vin-supply = <&vcc3v3_sys>;
-	};
-
-	vcc3v3_phy1: vcc3v3-phy1-regulator {
-		compatible = "regulator-fixed";
-		regulator-name = "vcc3v3_phy1";
-		regulator-always-on;
-		regulator-boot-on;
-		regulator-min-microvolt = <3300000>;
-		regulator-max-microvolt = <3300000>;
-		vin-supply = <&vcc3v3_sys>;
-	};
-
 	vcc3v3_pcie: vcc3v3-pcie-regulator {
 		compatible = "regulator-fixed";
 		regulator-name = "vcc3v3_pcie";
