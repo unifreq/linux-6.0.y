@@ -211,6 +211,10 @@
 	status = "okay";
 };
 
+&gic {
+	mbi-ranges = <202 56>, <264 56>;
+};
+
 &pcie30phy {
 	data-lanes = <1 2>;
 	status = "okay";
