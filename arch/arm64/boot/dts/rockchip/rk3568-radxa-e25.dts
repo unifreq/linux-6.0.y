@@ -94,6 +94,7 @@
 };
 
 &combphy1 {
+	rockchip,dis-u3otg1-port;
 	status = "okay";
 };
 
@@ -101,15 +102,10 @@
 	status = "okay";
 };
 
-&gpu {
-	mali-supply = <&vdd_gpu>;
-	status = "okay";
-};
-
 &hdmi {
 	avdd-0v9-supply = <&vdda0v9_image>;
 	avdd-1v8-supply = <&vcca1v8_image>;
-	status = "okay";
+	status = "disabled";
 };
 
 &hdmi_in {
@@ -125,7 +121,7 @@
 };
 
 &hdmi_sound {
-	status = "okay";
+	status = "disabled";
 };
 
 &vp0 {
@@ -176,7 +172,7 @@
 };
 
 &usb_host1_xhci {
-	status = "okay";
+	status = "disabled";
 };
 
 &usb2phy0 {
@@ -215,34 +211,34 @@
 	mbi-ranges = <202 56>, <264 56>;
 };
 
+/* rtl8125 1 */
+&pcie2x1 {
+	reset-gpios = <&gpio1 RK_PB2 GPIO_ACTIVE_HIGH>;
+	vpcie3v3-supply = <&pcie30_3v3>;
+	pinctrl-0 = <&pcie20m2_pins>; 
+	status = "okay";
+};
+
 &pcie30phy {
 	data-lanes = <1 2>;
 	status = "okay";
 };
 
+/* mini pcie */
 &pcie3x1 {
 	num-lans = <1>;
 	reset-gpios = <&gpio0 RK_PC3 GPIO_ACTIVE_HIGH>;
 	vpcie3v3-supply = <&pcie30_3v3>;
 	pinctrl-0 = <&pcie30x1m0_pins>; 
-	bus-scan-delay-ms = <1000>;
 	status = "okay";
 };
 
+/* rtl8125 2 */
 &pcie3x2 {
 	num-lans = <1>;
 	reset-gpios = <&gpio2 RK_PD6 GPIO_ACTIVE_HIGH>;
 	vpcie3v3-supply = <&pcie30_3v3>;
 	pinctrl-0 = <&pcie30x2m1_pins>; 
-	bus-scan-delay-ms = <1000>;
-	status = "okay";
-};
-
-&pcie2x1 {
-	reset-gpios = <&gpio1 RK_PB2 GPIO_ACTIVE_HIGH>;
-	vpcie3v3-supply = <&pcie30_3v3>;
-	pinctrl-0 = <&pcie20m2_pins>; 
-	bus-scan-delay-ms = <1000>;
 	status = "okay";
 };
 

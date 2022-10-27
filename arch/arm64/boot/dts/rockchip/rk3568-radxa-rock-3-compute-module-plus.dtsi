@@ -140,6 +140,11 @@
 	cpu-supply = <&vdd_cpu>;
 };
 
+&gpu {
+	mali-supply = <&vdd_gpu>;
+	status = "okay";
+};
+
 &i2c0 {
 	status = "okay";
 
@@ -382,7 +387,7 @@
 
 &i2s1_8ch {
 	rockchip,trcm-sync-tx-only;
-	status = "disabled";
+	status = "okay";
 };
 
 &gmac1 {
@@ -448,13 +453,13 @@
 };
 
 &vop {
-	status = "disabled";
+	status = "okay";
 	assigned-clocks = <&cru DCLK_VOP0>, <&cru DCLK_VOP1>;
 	assigned-clock-parents = <&pmucru PLL_HPLL>, <&cru PLL_VPLL>;
 };
 
 &vop_mmu {
-	status = "disabled";
+	status = "okay";
 };
 
 //wifi
