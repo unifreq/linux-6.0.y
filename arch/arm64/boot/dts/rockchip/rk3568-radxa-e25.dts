@@ -13,6 +13,13 @@
 	model = "Radxa E25";
 	compatible = "radxa,e25", "rockchip,rk3568";
 
+	alias {
+		led-boot = &led_surround_red;
+		led-failsafe = &led_surround_red;
+		led-running = &led_surround_red;
+		led-upgrade = &led_surround_red;
+	};
+
 	vcc5v0_otg: vcc5v0-otg-regulator {
 		compatible = "regulator-fixed";
 		regulator-always-on;
@@ -75,6 +82,24 @@
 		em05,power-gpio = <&gpio0 RK_PD6 GPIO_ACTIVE_HIGH>;
 		em05,reset-gpio = <&gpio0 RK_PD5 GPIO_ACTIVE_HIGH>;
 		em05,airplane-gpio = <&gpio1 RK_PA4 GPIO_ACTIVE_HIGH>;
+	};
+
+	gpio_leds: gpio-leds {
+		led_surround_red: led-surround-red {
+			gpios = <&gpio0 RK_PC0 GPIO_ACTIVE_HIGH>;
+			label = "surround:red";
+			linux,default-trigger = "timer";
+			default-state = "on";
+			pinctrl-0 = <&led_surround_red_en>;
+   	    	};
+
+       		led_surround_green: led-surround-green {
+			gpios = <&gpio0 RK_PC1 GPIO_ACTIVE_HIGH>;
+			label = "surround:green";
+			linux,default-trigger = "heartbeat";
+			default-state = "on";
+			pinctrl-0 = <&led_surround_green_en>;
+       		};
 	};
 };
 
@@ -254,4 +279,18 @@
 			rockchip,pins = <0 RK_PD5 RK_FUNC_GPIO &pcfg_pull_none>;
 		};
 	};
+
+	leds {
+		led_surround_red_en: led-surround-red-en {
+			rockchip,pins = <0 RK_PC0 RK_FUNC_GPIO &pcfg_pull_none>;
+		};
+
+		led_surround_green_en: led-surround-green-en {
+			rockchip,pins = <0 RK_PC1 RK_FUNC_GPIO &pcfg_pull_none>;
+		};
+	};
+};
+
+&led_user {
+	default-state = "off";
 };
