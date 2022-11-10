@@ -75,6 +75,19 @@
 		regulator-boot-on;
 	};
 
+	lte_modem_pwren: lte_modem_pwren {
+		compatible = "regulator-fixed";
+		regulator-name = "lte_modem_pwren";
+		regulator-always-on;
+		regulator-boot-on;
+
+		enable-active-high;
+		gpio = <&gpio0 RK_PD6 GPIO_ACTIVE_HIGH>;
+
+		pinctrl-names = "default";
+		pinctrl-0 = <&em05_power_en>;
+	};
+/*
 	em05_modem: em05-modem {
 		compatible = "lte-em05-modem-platdata";
 		pinctrl-names = "default";
@@ -83,7 +96,7 @@
 		em05,reset-gpio = <&gpio0 RK_PD5 GPIO_ACTIVE_HIGH>;
 		em05,airplane-gpio = <&gpio1 RK_PA4 GPIO_ACTIVE_HIGH>;
 	};
-
+*/
 	gpio_leds: gpio-leds {
 		led_surround_red: led-surround-red {
 			gpios = <&gpio0 RK_PC0 GPIO_ACTIVE_HIGH>;
@@ -236,19 +249,19 @@
 };
 
 &pwm1 {
-	status = "okay";
+	status = "disabled";
 	pinctrl-names = "active";
 	pinctrl-0 = <&pwm1m0_pins>;
 };
 
 &pwm2 {
-	status = "okay";
+	status = "disabled";
 	pinctrl-names = "active";
 	pinctrl-0 = <&pwm2m0_pins>;
 };
 
 &pwm12 {
-	status = "okay";
+	status = "disabled";
 	pinctrl-names = "active";
 	pinctrl-0 = <&pwm12m1_pins>;
 };
