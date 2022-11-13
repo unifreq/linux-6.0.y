@@ -101,6 +101,12 @@
 		regulator-boot-on;
 		regulator-min-microvolt = <3300000>;
 		regulator-max-microvolt = <3300000>;
+
+		enable-active-high;
+		gpio = <&gpio0 RK_PB6 GPIO_ACTIVE_HIGH>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&vcc3v3_sys_en>;
+
 		vin-supply = <&vcc5v0_sys>;
 	};
 
@@ -150,22 +156,6 @@
 
 		pinctrl-names = "default";
 		pinctrl-0 = <&vcc3v3_sd_en>;
-	};
-
-	vcc3v3_pcie: vcc3v3-pcie-regulator {
-		compatible = "regulator-fixed";
-
-		regulator-min-microvolt = <3300000>;
-		regulator-max-microvolt = <3300000>;
-		regulator-name = "vcc3v3_pcie";
-		startup-delay-us = <5000>;
-
-		enable-active-high;
-		gpio = <&gpio2 RK_PD2 GPIO_ACTIVE_HIGH>;
-
-		pinctrl-names = "default";
-		pinctrl-0 = <&vcc3v3_pcie_en>;
-		vin-supply = <&vcc3v3_sys>;
 	};
 
 	rk809-sound {
@@ -597,7 +587,7 @@
 
 &pcie2x1 {
 	reset-gpios = <&gpio2 RK_PD6 GPIO_ACTIVE_HIGH>;
-	vpcie3v3-supply = <&vcc3v3_pcie>;
+	vpcie3v3-supply = <&vcc3v3_sys>;
 	status = "okay";
 };
 
@@ -609,7 +599,7 @@
 &pcie3x1 {
 	num-lanes = <1>;
 	reset-gpios = <&gpio3 RK_PA4 GPIO_ACTIVE_HIGH>;
-	vpcie3v3-supply = <&vcc3v3_pcie>;
+	vpcie3v3-supply = <&vcc3v3_sys>;
 	status = "okay";
 
 	pcie@0,0 {
@@ -629,7 +619,7 @@
 	num-lanes = <1>;
 	rockchip,init-delay-ms = <100>;
 	reset-gpios = <&gpio2 RK_PD0 GPIO_ACTIVE_HIGH>;
-	vpcie3v3-supply = <&vcc3v3_pcie>;
+	vpcie3v3-supply = <&vcc3v3_sys>;
 	status = "okay";
 
 	pcie@0,0 {
@@ -666,6 +656,12 @@
 		};
 	};
 
+	vcc {
+		vcc3v3_sys_en: vcc3v3-sys-en {
+			rockchip,pins = <0 RK_PB6 RK_FUNC_GPIO &pcfg_pull_none>;
+		};
+	};
+
 	pmic {
 		pmic_int: pmic-int {
 			rockchip,pins = <0 RK_PA3 RK_FUNC_GPIO &pcfg_pull_up>;
@@ -675,12 +671,6 @@
 	usb {
 		vcc5v0_usb_otg_en: vcc5v0-usb-otg-en {
 			rockchip,pins = <0 RK_PA5 RK_FUNC_GPIO &pcfg_pull_none>;
-		};
-	};
-
-	pcie {
-		vcc3v3_pcie_en: vcc3v3-pcie-en {
-			rockchip,pins = <2 RK_PD2 RK_FUNC_GPIO &pcfg_pull_none>;
 		};
 	};
 
