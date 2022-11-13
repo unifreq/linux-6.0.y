@@ -117,9 +117,6 @@
 		regulator-min-microvolt = <5000000>;
 		regulator-max-microvolt = <5000000>;
 
-		regulator-always-on;
-		regulator-boot-on;
-
 		enable-active-high;
 		gpio = <&gpio0 RK_PA5 GPIO_ACTIVE_HIGH>;
 		pinctrl-names = "default";
@@ -127,18 +124,6 @@
 
 		vin-supply = <&vcc5v0_sys>;
 
-	};
-
-	vcc5v0_usb_host: vcc5v0-usb-host-regulator {
-		compatible = "regulator-fixed";
-
-		regulator-name = "vcc5v0_usb_host";
-		regulator-min-microvolt = <5000000>;
-		regulator-max-microvolt = <5000000>;
-		regulator-always-on;
-		regulator-boot-on;
-
-		vin-supply = <&vcc5v0_usb_otg>;
 	};
 
 	vcc3v3_sd_pwren: vcc3v3-sd-pwren-regulator {
@@ -737,6 +722,10 @@
 	status = "okay";
 };
 
+&sata0 {
+	status = "okay";
+};
+
 &usb_host0_ehci {
 	status = "okay";
 };
@@ -746,9 +735,7 @@
 };
 
 &usb_host0_xhci {
-	extcon = <&usb2phy0>;
-	dr_mode = "host";
-	status = "okay";
+	status = "disabled";
 };
 
 &usb_host1_ehci {
@@ -768,12 +755,12 @@
 };
 
 &usb2phy0_host {
-	phy-supply = <&vcc5v0_usb_host>;
+	phy-supply = <&vcc5v0_usb_otg>;
 	status = "okay";
 };
 
 &usb2phy0_otg {
-	phy-supply = <&vcc5v0_usb_host>;
+	phy-supply = <&vcc5v0_usb_otg>;
 	status = "okay";
 };
 
@@ -782,12 +769,12 @@
 };
 
 &usb2phy1_host {
-	phy-supply = <&vcc5v0_usb_host>;
+	phy-supply = <&vcc5v0_usb_otg>;
 	status = "okay";
 };
 
 &usb2phy1_otg {
-	phy-supply = <&vcc5v0_usb_host>;
+	phy-supply = <&vcc5v0_usb_otg>;
 	status = "okay";
 };
 
