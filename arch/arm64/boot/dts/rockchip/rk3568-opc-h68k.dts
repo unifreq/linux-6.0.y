@@ -794,3 +794,7 @@
 		remote-endpoint = <&hdmi_in_vp0>;
 	};
 };
+
+&pwm0 {
+	status = "okay";
+};
