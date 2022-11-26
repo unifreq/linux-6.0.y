@@ -87,6 +87,7 @@ dtb-$(CONFIG_ARCH_MESON) += meson-gxm-nexbox-a2.dtb
 dtb-$(CONFIG_ARCH_MESON) += meson-gxm-octopus-planet.dtb
 dtb-$(CONFIG_ARCH_MESON) += meson-gxm-q200.dtb
 dtb-$(CONFIG_ARCH_MESON) += meson-gxm-q201.dtb
+dtb-$(CONFIG_ARCH_MESON) += meson-gxm-phicomm-t1.dtb
 dtb-$(CONFIG_ARCH_MESON) += meson-gxm-rbox-pro.dtb
 dtb-$(CONFIG_ARCH_MESON) += meson-gxm-s912-libretech-pc.dtb
 dtb-$(CONFIG_ARCH_MESON) += meson-gxm-t95z-plus.dtb
