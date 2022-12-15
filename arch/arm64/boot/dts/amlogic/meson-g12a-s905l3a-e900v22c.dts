@@ -149,3 +149,11 @@
 	//		opp-microvolt = <1021000>;
 	//};
 };
+
+&ethmac {
+	/delete-property/ resets;
+	/delete-property/ reset-names;
+	phy-handle = <&internal_ephy>;
+	phy-mode = "rmii";
+	status = "okay";
+};
